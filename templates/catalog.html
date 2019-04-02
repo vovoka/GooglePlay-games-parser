@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Single category page</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<h1>Full Catalog </h1>
+Click on category you interested.<br>
+
+<button type="button" class="btn btn-default" onclick="window.location.href = '/TEST';">Back to categories</button>
+<h2> Full Catalog </h2>
+
+{% for category, games in catalog %}
+<div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    {{ category }}
+  </button>
+  <div class="dropdown-menu">
+    {% for g in games %}
+    <a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.{{ g }}">{{ g }}</a><br>
+    {% endfor %}
+  </div>
+</div>
+<br>
+{% endfor %}
+
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+      {% for category, games in catalog %}
+        <tr>
+          <th>
+            <span class="badge badge-success">
+              {{ category }}
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for g in games %}
+        <tr>
+          <td>   {{ g }}</td>
+        </tr>
+        {% endfor %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

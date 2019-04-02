@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Single category page</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <h1>Single category page</h1>
+
+  <button type="button" class="btn btn-default" onclick="window.location.href = '/TEST';">Back to categories</button>
+  <h2> {{ cat_link }} </h2>
+
+
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Game name</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for g in games %}
+        <tr>
+          <td>
+            <a href="https://play.google.com/store/apps/details?id=com.{{ g }}">{{ g }}</a></td>
+          <td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

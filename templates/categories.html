@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GooglePlay games parser</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <h1>GooglePlay games parser</h1>
+
+
+  <p> Page content is based on data parsing. HTML Parsing might takes a time. Please, be patient.<br>Collected Data stored at DB and not refreshed by re-parsing.</p>
+
+  <p> If you click "Parse all" button first time all the games categories will be parsed. <br>It may takes up to several minutes.<br>Collected data will be stored at local DB and then you will be able to read the Catalog with no delay.</p>
+
+
+<form method="GET" target="_self"  class="form-inline" action="http://127.0.0.1:5000" _lpchecked="1">
+  <label for="keywords" class="mr-sm-2">Search:</label>
+  <input type="search" id="search" class="form-control mb-2 mr-sm-2" placeholder="keyword" name="search">
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary mb-2" id="submit">Submit</button>
+    <button type="button" class="btn btn-warning mb-2" onclick="window.location.href = '/CATALOG';">Parse all</button>
+    <button type="button" class="btn btn-danger mb-2" onclick="window.location.href = '/ALL_DATA_IN_DB_IS_REMOVED';">Delete collected data</button>
+  </div>
+</form>
+
+<br>
+<p> Game categories already parsed are marked green. Categories NOT parsed yet - red.</p>
+<br>
+
+<div class="container" style="width: 30%">
+  <h2>Parsing results. Categories.</h2>
+  <table class="table table-hover" >
+  
+    <thead>
+      <tr>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for category, has_games in categories %}
+    {% if has_games %} <tr class="table-success" >{% else %} <tr class="table-danger"> {% endif %}
+        <td><a href='/TEST/{{ category }}'>{{ category }}</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

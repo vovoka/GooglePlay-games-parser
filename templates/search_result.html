@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GooglePlay games parser</title>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<h1>GooglePlay games parser</h1>
+
+<button type="button" class="btn btn-default" onclick="window.location.href = '/TEST';">Back to categories</button>
+
+<h2>Parsing results<h2>
+
+
+<div class="container">
+{% for category, games in categories.items() %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Keyword: {{ category }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for g in games %}
+        <tr>
+            <td>
+            <a href="https://play.google.com/store/apps/details?id=com.{{ g }}">{{ g }}</a></td>
+            <td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+</div>
+
+
+</body>
+</html>
